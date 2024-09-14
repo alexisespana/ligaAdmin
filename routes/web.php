@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Equipos\EquiposController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.inicio');
+});
+
+Route::prefix('Equipos')->group(function () {
+    Route::get('/Lista', [EquiposController::class, 'index'])->name('viewLista-equipos');
+
 });
