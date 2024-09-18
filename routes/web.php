@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Categorias\CategoriasController;
 use App\Http\Controllers\Equipos\EquiposController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('layouts.inicio');
+});
+
+Route::prefix('Categorias')->group(function () {
+    Route::get('/Lista', [CategoriasController::class, 'index'])->name('viewLista-categorias');
+    Route::post('/datatables', [CategoriasController::class, 'datatableCategorias'])->name('datatables-categorias');
+    
+    Route::get('/viewCrearCategorias', [CategoriasController::class, 'viewCrearCategorias'])->name('view-agregar-categorias');
+    Route::post('/agregar', [CategoriasController::class, 'agregarCategorias'])->name('agregar-categorias');
+    Route::post('/viewEditar', [CategoriasController::class, 'viewEditarCategorias'])->name('view-editar-categoria');
+    Route::post('/editar', [CategoriasController::class, 'EditarCategorias'])->name('editar-categorias');
+    Route::post('/delete', [CategoriasController::class, 'deleteCategorias'])->name('eliminar-categorias');
+
+
 });
 
 Route::prefix('Equipos')->group(function () {

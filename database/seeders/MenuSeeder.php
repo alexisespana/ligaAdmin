@@ -68,14 +68,14 @@ class MenuSeeder extends Seeder
             [
                 "tipo" => "2",
                 "nombre" => "Lista de Categorias",
-                "href" => "/Categorias/registrar",
+                "href" => "/Categorias/Lista",
                 "id_menupadre" => "3",
                 "orden" => "1"
             ],
             [
                 "tipo" => "2",
                 "nombre" => "Resultados Juegos",
-                "href" => "/Resultados/Registrar",
+                "href" => "/Resultados/Jornada",
                 "id_menupadre" => "4",
                 "orden" => "1"
             ],

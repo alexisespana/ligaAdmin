@@ -17,7 +17,6 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         $baseUrl = env('API_ENDPOINT');
-
     }
 
     /**
@@ -33,19 +32,21 @@ class AppServiceProvider extends ServiceProvider
             }])->first();
 
             $allMenu = [];
-            foreach ($menusAsignados->Menu as $key => $benf) {
-                //Recorremos los datos del array y si no es null agrupamos por anio
-                if (!is_null($menusAsignados->Menu[$key])) {
-                    $menu = $benf->MenuPadre->nombre;
+            if (isset($menusAsignados->Menu)) {
+
+                foreach ($menusAsignados->Menu as $key => $benf) {
+                    //Recorremos los datos del array y si no es null agrupamos por anio
+                    if (!is_null($menusAsignados->Menu[$key])) {
+                        $menu = $benf->MenuPadre->nombre;
 
 
-                    $allMenu[$menu][] = $benf;
+                        $allMenu[$menu][] = $benf;
+                    }
                 }
             }
-            $menusAsignados = $allMenu;
 
             // dd($menusAsignados);
-            $view->with('menus', ['menus' => $menusAsignados]);
+            $view->with('menus', ['menus' => $allMenu]);
         });
     }
 }

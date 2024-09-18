@@ -18,7 +18,7 @@ trait peticionTraits
         //     'name' => 'Steve',
         //     'role' => 'Network Administrator',
         // ]);
-        return  [
+        return (object) [
             'data'=>$response->object(),
             'status'=>$response->status()
     ];

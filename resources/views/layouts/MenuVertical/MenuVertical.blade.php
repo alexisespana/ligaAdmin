@@ -13,8 +13,8 @@
     </div>
     <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
         <div class="navbar-vertical-content scrollbar">
+            @forelse ($menus as $key=> $item)
             <ul class="navbar-nav flex-column mb-3" id="navbarVerticalNav">
-                @forelse ($menus as $key=> $item)
                     @if ($item[0]->tipo == 1)
                         <li class="nav-item">
                             <a class="nav-link" href="../../pages/starter.html" role="button">
@@ -51,15 +51,18 @@
 
 
                 @empty
-                    <li>
-                        <a class="  wavess-block disabled">
-                            <i class="material-icons col-red">block</i>
-                            <span>No tiene Modulos asignados</span>
-                        </a>
-                    </li>
+                <div class="settings my-3">
+                    <div class="card shadow-none">
+                      <div class="card-body alert mb-0" role="alert">
+                        <div class="text-center"><img src="../../assets/img/icons/spot-illustrations/navbar-vertical.png" alt="" width="80">
+                          <p class="fs-11 mt-2">No tienes Modúlos asignados..</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                    
+                </ul>
                 @endforelse
-
-            </ul>
 
         </div>
     </div>

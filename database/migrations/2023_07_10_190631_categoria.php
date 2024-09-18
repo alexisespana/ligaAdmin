@@ -17,6 +17,7 @@ class Categoria extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('alias');
+            $table->integer('vigente')->default(1);
             $table->timestamps();
             
         });

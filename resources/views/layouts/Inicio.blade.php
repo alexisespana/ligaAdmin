@@ -11,12 +11,12 @@
 
     <script src="{{ asset('js/config.js') }}"></script>
     <script src="{{ asset('js/simplebar.min.js') }}"></script>
-
     <link rel="stylesheet" href="{{ asset('css/simplebar.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/theme.min.css') }}" type="text/css">
-    {{-- <link rel="stylesheet" href="{{ asset('css/theme-rtl.min.css') }}" type="text/css"> --}}
     <link rel="stylesheet" href="{{ asset('css/user-rtl.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/user.min.css') }}" type="text/css">
+
+
 
     @yield('css')
 </head>
@@ -32,7 +32,12 @@
                 @include('layouts.header')
 
                 <div class="container">
-                    @yield('content')
+                    <div class="row mb-3">
+
+                        @yield('content')
+                    </div>
+                    @include('layouts.Modal.Modal')
+
                 </div>
             </div>
         </div>
@@ -43,7 +48,8 @@
 
     </nav>
 
-
+    <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/axios.min.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/anchor.min.js') }}"></script>
@@ -55,6 +61,8 @@
     <script src="{{ asset('js/list.min.js') }}"></script>
 
     <script src="{{ asset('js/theme.js') }}"></script>
+
+    <script></script>
     @yield('scripts')
 
 
