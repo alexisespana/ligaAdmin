@@ -42,7 +42,6 @@
         </div>
     @endif
 
-    <div class="card">
         <div class="card-header">
             Lista de categorias
 
@@ -68,7 +67,6 @@
 
         </div>
 
-    </div>
 
 @stop
 @section('scripts')

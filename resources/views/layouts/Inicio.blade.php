@@ -33,8 +33,10 @@
 
                 <div class="container">
                     <div class="row mb-3">
+                        <div class="card">
 
-                        @yield('content')
+                            @yield('content')
+                        </div>
                     </div>
                     @include('layouts.Modal.Modal')
 
