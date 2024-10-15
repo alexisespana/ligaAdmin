@@ -54,6 +54,8 @@
                         <th class="text-900 sort" data-sort="Nombre">#</th>
                         <th class="text-900 sort" data-sort="Nombre">Nombre</th>
                         <th class="text-900 sort" data-sort="NomnbreCorto">Nomnbre Corto</th>
+                        <th class="text-900 sort" data-sort="grupos">Grupos</th>
+                        <th class="text-900 sort" data-sort="n_grupos">Nro.Grupos</th>
                         <th class="text-900 sort" data-sort="cantEquipos">Cantidad Equipos</th>
                         <th class="text-900 sort" data-sort="cantEquipos">Equipos</th>
                         <th class="text-900 sort" data-sort="cantEquipos">Opciones</th>
@@ -143,6 +145,15 @@
                     {
                         data: 'ALIAS',
                         name: 'ALIAS',
+                    },
+                    {
+                        data: 'GRUPOS',
+                        name: 'GRUPOS',
+                        visible: false,
+                    },
+                    {
+                        data: 'N_GRUPOS',
+                        name: 'N_GRUPOS',
                     },
                     {
                         data: 'CANTIDAD_EQUIPOS',

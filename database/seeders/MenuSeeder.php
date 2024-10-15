@@ -22,30 +22,36 @@ class MenuSeeder extends Seeder
                 "icono" => "home",
                 "orden" => "1"
             ],
-            [
-                "nombre" => "Equipos",
-                "icono" => "view_list",
-                "orden" => "2"
-            ],
+           
             [
                 "nombre" => "Categorias",
                 "icono" => "equalizer",
+                "orden" => "2"
+            ],
+            [
+                "nombre" => "Grupos",
+                "icono" => "fas fa-layer-group",
                 "orden" => "3"
+            ],
+            [
+                "nombre" => "Equipos",
+                "icono" => "view_list",
+                "orden" => "4"
             ],
             [
                 "nombre" => "Resultados",
                 "icono" => "fas fa-futbol",
-                "orden" => "4"
+                "orden" => "5"
             ],
             [
                 "nombre" => "Jugadores",
                 "icono" => "swap_horiz",
-                "orden" => "5"
+                "orden" => "6"
             ],
             [
                 "nombre" => "Jornadas",
                 "icono" => "swap_horiz",
-                "orden" => "6"
+                "orden" => "7"
             ],
 
         ];
@@ -58,25 +64,33 @@ class MenuSeeder extends Seeder
                 "orden" => "1"
             ],
 
+          
             [
                 "tipo" => "2",
-                "nombre" => "Lista de Equipos",
-                "href" => "/Equipos/Lista",
+                "nombre" => "Lista de Categorias",
+                "href" => "/Categorias/Lista",
                 "id_menupadre" => "2",
                 "orden" => "1"
             ],
             [
                 "tipo" => "2",
-                "nombre" => "Lista de Categorias",
-                "href" => "/Categorias/Lista",
+                "nombre" => "Lista de grupos",
+                "href" => "/Grupos/Lista",
                 "id_menupadre" => "3",
+                "orden" => "1"
+            ],
+            [
+                "tipo" => "2",
+                "nombre" => "Lista de Equipos",
+                "href" => "/Equipos/Lista",
+                "id_menupadre" => "4",
                 "orden" => "1"
             ],
             [
                 "tipo" => "2",
                 "nombre" => "Resultados Juegos",
                 "href" => "/Resultados/Jornada",
-                "id_menupadre" => "4",
+                "id_menupadre" => "5",
                 "orden" => "1"
             ],
 
@@ -85,14 +99,14 @@ class MenuSeeder extends Seeder
                 "tipo" => "2",
                 "nombre" => "Lista de Jugadores",
                 "href" => "/Jugadores/Registrar",
-                "id_menupadre" => "5",
+                "id_menupadre" => "6",
                 "orden" => "1"
             ],
             [
                 "tipo" => "2",
                 "nombre" => "Lista Jornadas",
                 "href" => "/Jornada/Registrar",
-                "id_menupadre" => "6",
+                "id_menupadre" => "7",
                 "orden" => "1"
             ],
         ];

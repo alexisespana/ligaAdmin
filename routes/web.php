@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Categorias\CategoriasController;
 use App\Http\Controllers\Equipos\EquiposController;
+use App\Http\Controllers\Grupos\GruposController;
+use App\Http\Controllers\Resultados\ResultadosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +30,15 @@ Route::prefix('Categorias')->group(function () {
     Route::post('/viewEditar', [CategoriasController::class, 'viewEditarCategorias'])->name('view-editar-categoria');
     Route::post('/editar', [CategoriasController::class, 'EditarCategorias'])->name('editar-categorias');
     Route::post('/delete', [CategoriasController::class, 'deleteCategorias'])->name('eliminar-categorias');
+});
+Route::prefix('Grupos')->group(function () {
+    Route::get('/Lista', [GruposController::class, 'index'])->name('viewLista-grupos');
+    Route::post('/viewCrearGrupos', [GruposController::class, 'viewCrearCrupos'])->name('view-agregar-grupos');
+    Route::post('/agregar', [GruposController::class, 'agregarGrupos'])->name('agregar-grupos');
+});
+
+Route::prefix('Resultados')->group(function () {
+    Route::get('/Lista', [ResultadosController::class, 'index'])->name('viewLista-resultados');
 });
 
 Route::prefix('Equipos')->group(function () {

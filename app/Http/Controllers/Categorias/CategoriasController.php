@@ -22,8 +22,13 @@ class CategoriasController extends Controller
 
         $categorias = $this->peticicion('categorias', 'get', []);
         $categorias = $categorias->data;
+        rsort($categorias);
+
+        // dd($categorias);
+
 
         $categoria = collect($categorias)->map(function ($categoria, $index) {
+            // dd($categoria, $index);
 
             $equipos = [];
             foreach ($categoria->equipos as $equipo) {
@@ -37,6 +42,8 @@ class CategoriasController extends Controller
                 'id' => $categoria->id,
                 'NOMBRE' => $categoria->nombre,
                 'ALIAS' => $categoria->alias,
+                'GRUPOS' => $categoria->grupos,
+                'N_GRUPOS' => $categoria->cant_grupos,
                 'CANTIDAD_EQUIPOS' => count($categoria->equipos),
                 'EQUIPOS' => $equipos,
             ];
