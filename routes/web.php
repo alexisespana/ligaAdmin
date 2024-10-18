@@ -3,6 +3,7 @@
 use App\Http\Controllers\Categorias\CategoriasController;
 use App\Http\Controllers\Equipos\EquiposController;
 use App\Http\Controllers\Grupos\GruposController;
+use App\Http\Controllers\Jornadas\JornadasController;
 use App\Http\Controllers\Resultados\ResultadosController;
 use Illuminate\Support\Facades\Route;
 
@@ -48,4 +49,7 @@ Route::prefix('Equipos')->group(function () {
     Route::post('/agregar', [EquiposController::class, 'agregarEquipos'])->name('agregar-equipo');
     Route::post('/viewEditar', [EquiposController::class, 'viewEditarEquipo'])->name('view-editar-equipo');
     Route::post('/editar', [EquiposController::class, 'Editarequipo'])->name('editar-equipo');
+});
+Route::prefix('Jornadas')->group(function () {
+    Route::get('/Lista', [JornadasController::class, 'index'])->name('viewLista-jornadas');
 });

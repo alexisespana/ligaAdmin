@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Equipos;
 use App\Http\Controllers\Controller;
 use App\Traits\peticionTraits;
 use Illuminate\Http\Request;
-use Illuminate\Support\Env;
-use Illuminate\Support\Facades\Http;
 use Yajra\DataTables\Facades\DataTables;
 
 class EquiposController extends Controller
