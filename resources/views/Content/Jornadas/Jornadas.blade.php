@@ -1,5 +1,5 @@
 @extends('layouts.inicio')
-@section('title', 'Equipos')
+@section('title', 'Jornadas')
 @section('css')
 
     <link rel="stylesheet" href="{{ asset('css/dataTables/dataTables.bootstrap.min.css') }}" type="text/css">

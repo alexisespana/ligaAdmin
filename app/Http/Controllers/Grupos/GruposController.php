@@ -24,7 +24,7 @@ class GruposController extends Controller
         $categoria = $this->peticicion('categorias', 'get', ['id_categoria' => $request->idCateg]);
         $categoria = $categoria->data;
         // dd($categoria);
-        return view('Content.Grupos.DefinirGrupos', compact('categoria' ));
+        return view('Content.Grupos.DefinirGrupos', compact('categoria'));
     }
     public function agregarGrupos(Request $request)
     {
@@ -40,6 +40,5 @@ class GruposController extends Controller
         }
         // dd($categorias);
         return redirect()->route('viewLista-grupos')->with($status, $message);
-
     }
 }

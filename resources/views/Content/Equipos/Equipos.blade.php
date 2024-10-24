@@ -108,10 +108,11 @@
                         name: 'NOMBRE',
                         class: 'text-nowrap nombre',
                         render: function(data, type, td, row) {
+                            
                             data =
                                 ' <div class="d-flex align-items-center">' +
                                 ' <div class = "avatar avatar-xl" >' +
-                                '<img class = "rounded-circle" src = "' + td.ESCUDO + '" alt = "" / >' +
+                                '<img class = "rounded-circle" src = "{{ asset("img/Escudo/") }}' + td.ESCUDO + '" alt = "" / >' +
                                 '</div>' +
                                 '<div class="ms-2">' + data + '</div></div>';
                             return data;

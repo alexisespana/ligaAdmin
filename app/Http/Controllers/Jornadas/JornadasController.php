@@ -13,10 +13,10 @@ class JornadasController extends Controller
     {
         $jornadas = $this->peticicion('Jornadas', 'get', []);
 
-        // dd($jornadas);
         $jornadas = $jornadas->data;
+        // dd($jornadas);
         return view('Content.Jornadas.Jornadas',compact('jornadas'));
 
-        dd($request->all());
+        // dd($request->all());
     }
 }

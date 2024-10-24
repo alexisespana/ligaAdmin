@@ -21,10 +21,15 @@ class CategoriasController extends Controller
     {
 
         $categorias = $this->peticicion('categorias', 'get', []);
-        $categorias = $categorias->data;
-        rsort($categorias);
 
-        // dd($categorias);
+        if ($categorias->status == 500) {
+            $categorias = [];
+        } else {
+
+            $categorias = $categorias->data;
+            rsort($categorias);
+        }
+
 
 
         $categoria = collect($categorias)->map(function ($categoria, $index) {
@@ -117,14 +122,13 @@ class CategoriasController extends Controller
         $editar = $this->peticicion('categorias/editarCategoria', 'post', $request->all());
         // dd($editar);
 
-       
+
         if ($editar->status == 200) {
             $status = 'success';
             $message = $editar->data->message;
-        }
-        else{
+        } else {
             $status = 'error';
-            $message = 'error '.$editar->status;
+            $message = 'error ' . $editar->status;
         }
         // dd($status);
         return redirect()->route('viewLista-categorias')->with($status, $message);
@@ -137,17 +141,15 @@ class CategoriasController extends Controller
         $editar = $this->peticicion('categorias/deleteCategoria', 'post',  ['id_categoria' => $request->idCateg]);
         // dd($editar);
 
-       
+
         if ($editar->status == 200) {
             $status = 'success';
             $message = $editar->data->message;
-        }
-        else{
+        } else {
             $status = 'error';
-            $message = 'error '.$editar->status;
+            $message = 'error ' . $editar->status;
         }
         // dd($status);
         return response()->json(['message' => $message, 'status' => $status]);
-
     }
 }

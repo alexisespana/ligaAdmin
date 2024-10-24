@@ -5,15 +5,21 @@
                 <div class="col grupo p-2" id="{{ $grupo->id }}">
                     <div class="card border h-100 border-primary">
                         <div class="card-body">
-                           <div class="card-title text-center"> {{$grupo->nombre}} </div>
+                            <div class="card-title text-center"> {{ $grupo->nombre }} </div>
                             <ul class="list-group">
                                 @foreach ($categ->equipos as $item)
                                     <li class="list-group-item">
-                                        <input class="form-check-input checkbox me-1" name="equipos[]"
+                                        <input class="form-check-input checkbox me-1 mt-3" name="equipos[]"
                                             data-id="{{ $item->id }}" type="checkbox" value="{{ $item->id }}"
                                             id="{{ $grupo->id }}-{{ $item->id }}">
-                                        <label class="form-check-label stretched-link"
+                                       
+                                            <label class="form-check-label stretched-link"
                                             for="{{ $grupo->id }}-{{ $item->id }}">{{ $item->nombre }}</label>
+                                            <div class="avatar avatar-l ">
+                                                <img class="rounded-circle mt-2"
+                                                    src="{{ asset("img/Escudo/") }}{{ $item->escudo }}"
+                                                    alt="" />
+                                            </div>
                                     </li>
                                 @endforeach
                             </ul>
@@ -103,7 +109,7 @@
                     idEquipos[i] = $(v).val();
                 });
                 $(sel).find('input#grupos').each(function(a, v) {
-                   idGrupos[i] = $(v).val();
+                    idGrupos[i] = $(v).val();
 
                 });
 
