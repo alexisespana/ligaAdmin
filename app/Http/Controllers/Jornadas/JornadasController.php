@@ -13,10 +13,37 @@ class JornadasController extends Controller
     {
         $jornadas = $this->peticicion('Jornadas', 'get', []);
 
-        $jornadas = $jornadas->data;
         // dd($jornadas);
-        return view('Content.Jornadas.Jornadas',compact('jornadas'));
+        $jornadas = $jornadas->data;
+        return view('Content.Jornadas.Jornadas', compact('jornadas'));
+    }
+
+    public function viewCrearJornadas(Request $request)
+    {
 
         // dd($request->all());
+        $jornada = $this->peticicion('Jornadas/buscarJornadas', 'post', $request->all());
+        $jornada = $jornada->data;
+
+        $status = [
+
+            (object)['status' => 'Completado', 'value' => '0'],
+            (object)['status' => 'Vigente', 'value' => '1'],
+            (object)['status' => 'Pendiente', 'value' => '2'],
+            (object)['status' => 'Suspendido', 'value' => '3'],
+        ];
+
+
+        return view('Content.Jornadas.CrearJornadas', compact('jornada', 'status'));
+    }
+
+    public function modificarJornada(Request $request)
+    {
+        // dd($request->all());
+        $jornada = $this->peticicion('Jornadas/modificarJornadas', 'post', $request->all());
+        $message =  $jornada->data->message;
+        $status = $jornada->status;
+
+        return response()->json(['message' => $message, 'status' => $status], $status);
     }
 }

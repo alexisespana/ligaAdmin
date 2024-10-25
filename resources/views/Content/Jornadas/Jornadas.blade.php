@@ -1,11 +1,12 @@
 @extends('layouts.inicio')
-@section('title', 'Jornadas')
+@section('title', 'Equipos')
 @section('css')
 
     <link rel="stylesheet" href="{{ asset('css/dataTables/dataTables.bootstrap.min.css') }}" type="text/css">
     <link href="{{ asset('/css/toastr/toastr.min.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/sweetAlert/sweetalert.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-select/bootstrap-select.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/datepicker/flatpickr.min.css') }}">
 
 
 
@@ -14,53 +15,118 @@
 @section('content')
 
     <div class="card-header">
-        Jornadas
+        <h5>Jornadas</h5>
     </div>
     <div class="card-body">
+
         <div class="row">
-            @forelse ($jornadas as $key=> $categ)
-                <div class="col pb-5">
-                    <div class="card text-bg-primary">
-                        <div class="card-body">
+
+            <div class="col-2">
+                <div class="list-group" id="myList" role="tablist">
+                    @forelse ($jornadas as $key=> $categ)
+                        <a class="list-group-item list-group-item-action {{ $key == 0 ? 'active' : '' }}"
+                            id="list-{{ $categ->alias }}-list" data-toggle="list" href="#list-{{ $categ->alias }}"
+                            role="tab" aria-controls="{{ $categ->alias }}">
+                            {{ $categ->nombre }}
+                        </a>
+
+                    @empty
+                    @endforelse
+                </div>
+            </div>
+            <div class="col-10">
+                <div class="tab-content" id="nav-tabContent">
+                    @forelse ($jornadas as $key=> $categ)
+                        <div class="tab-pane fade  {{ $key == 0 ? ' show active' : '' }}" id="list-{{ $categ->alias }}"
+                            role="tabpanel" aria-labelledby="list-{{ $categ->alias }}-list">
                             <div class="row">
 
-                                {{-- NOMBRE DE LA CATEGORIA --}}
-                                <h5 class="card-title text-center text-white pb-2"> {{ $categ->nombre }} </h5>
-                                @isset($categ->grupos)
+                                @if ($categ->cant_grupos > 0)
                                     @forelse ($categ->grupos as $catg)
-                                        <div class="col-6">
+                                        <div class="col-sm-6">
 
-                                            <div class="card">
+                                            <div class="card border-primary mb-3 ">
                                                 {{-- NOMBRE DEL GRUPO   --}}
                                                 <h5 class="text-center pt-2">{{ $catg->nombre }}</h5>
                                                 <hr>
                                                 <div class="card-body">
                                                     <ul class="list-group list-group-flush">
                                                         @forelse ($categ->jornadas as $jorn)
-                                                            <li class="list-group-item">{{ $jorn->nombre }} Fecha:
-                                                                {{ $jorn->fecha }} </li>
-
+                                                            <a class=" btn btn-info list-group-item list-group-item-action modificarJornada"
+                                                                aria-current="true" id="{{ $jorn->id }}">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">{{ $jorn->nombre }}</h5>
+                                                                    <span
+                                                                        class=" {{ $jorn->vigente == 0 ? 'text-success' : ($jorn->vigente == 1 ? 'text-info' : ($jorn->vigente == 2 ? 'text-secondary' : 'text-danger')) }}">
+                                                                        status:
+                                                                        {{ $jorn->vigente == 0 ? 'Completado' : ($jorn->vigente == 1 ? 'vigente' : ($jorn->vigente == 2 ? 'Pendiente' : 'Suspendido')) }}
+                                                                        <i
+                                                                            class=" {{ $jorn->vigente == 0 ? 'fas fa-check-double' : ($jorn->vigente == 1 ? 'fas fa-check' : ($jorn->vigente == 2 ? 'fas fa-minus-circle' : 'far fa-times-circle')) }}">
+                                                                        </i>
+                                                                    </span>
+                                                                </div>
+                                                                <small class="mb-1"> Fecha:
+                                                                    {{ (is_null($jorn->fecha)) ? $jorn->fecha : 'sin fecha definida ' }}
+                                                                </small>
+                                                                {{-- <small>And some small print.</small> --}}
+                                                            </a>
                                                         @empty
+                                                            EL GRUPO DE LA CATEGORIA NO TIENE JORNADAS ASIGNADAS
+                                                        @endforelse
                                                     </ul>
-                                                    EL GRUPO DE LA CATEGORIA NO TIENE JORNADAS ASIGNADAS
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @empty
                                     @endforelse
-                                </div>
+
+                                    {{-- SI LA CATEGORIA NO TIENE GRUPO --}}
+                                @else
+                                    <div class="card border-primary mb-3 ">
+
+                                        <div class="card-body">
+                                            <div class="list-group list-group-flush">
+                                                @forelse ($categ->jornadas as $jorn)
+                                                    <a class=" btn btn-info list-group-item list-group-item-action modificarJornada"
+                                                        aria-current="true" id="{{ $jorn->id }}">
+                                                        <div class="d-flex w-100 justify-content-between">
+                                                            <h5 class="mb-1">{{ $jorn->nombre }}</h5>
+                                                            <span
+                                                                class=" {{ $jorn->vigente == 0 ? 'text-success' : ($jorn->vigente == 1 ? 'text-info' : ($jorn->vigente == 2 ? 'text-secondary' : 'text-danger')) }}">
+                                                                status:
+                                                                {{ $jorn->vigente == 0 ? 'Completado' : ($jorn->vigente == 1 ? 'vigente' : ($jorn->vigente == 2 ? 'Pendiente' : 'Suspendido')) }}
+                                                                <i
+                                                                    class=" {{ $jorn->vigente == 0 ? 'fas fa-check-double' : ($jorn->vigente == 1 ? 'fas fa-check' : ($jorn->vigente == 2 ? 'fas fa-minus-circle' : 'far fa-times-circle')) }}">
+                                                                </i>
+                                                            </span>
+                                                        </div>
+                                                        <small class="mb-1"> Fecha:
+                                                            {{ isset($jorn->fecha) ? $jorn->fecha : 'sin fecha definida ' }}
+                                                        </small>
+                                                        {{-- <small>And some small print.</small> --}}
+                                                    </a>
+
+                                                @empty
+                                                    EL GRUPO DE LA CATEGORIA NO TIENE JORNADAS ASIGNADAS
+                                                @endforelse
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
+
+
+
                         </div>
                     @empty
-                        CATEGORIA SIN GRUPOS
-                @endforelse
-            @endisset
+                    @endforelse
+
+                </div>
+            </div>
+
 
         </div>
     </div>
-    </div>
-    </div>
-@empty
-    @endforelse
-    </div>
-    </div>
-
 
 
 @stop
@@ -69,13 +135,19 @@
     <script src="{{ asset('js/dataTables/dataTables.bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/dataTables/extensions/dataTables.buttons.min.js') }}"></script>
     <script src="{{ asset('/js/toastr/toastr.min.js') }}"></script>
-
     <script src="{{ asset('js/sweetAlert/sweetalert.min.js') }}"></script>
-
     <script src="{{ asset('js/bootstrap-select/bootstrap-select.min.js') }}"></script>
+    <script src="{{ asset('/js/datepicker/flatpickr.min.js') }}"></script>
+
 
     <script>
         //   dataTableCategorias(true);
+        $('#myList a').on('click', function(e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+
+
 
         function dataTableCategorias(params) {
             var token = $("input[name=_token]").val();
@@ -204,18 +276,20 @@
 
         }
 
-        $(document).on('click', '.editEquipo', function(e) {
+        $(document).on('click', '.modificarJornada', function(e) {
             // console.log($(this).attr('data-idcateg'));
 
-            let idEquipo = $(this).attr('data-idEquipo');
-            axios.post("{{ route('view-editar-equipo') }}", {
-                    idEquipo: idEquipo,
+            // let idCategoria = $(this).attr('id');
+            let idJornada = $(this).attr('id');
+            //alert(idCategoria); //
+            axios.post("{{ route('view-crear-jornada') }}", {
+                    idJornada: idJornada,
 
                 })
                 .then(response => {
 
                     if (response.status == 200) {
-                        $('#titleModal').empty().html('Editar Equipo');
+                        $('#titleModal').empty().html('Agregar Jornada');
                         $('.modal').modal('show');
                         $('.modal').find('.modal-dialog').removeClass('').addClass('modal-lg');
                         $('.modal').find('.modal-body').empty().append(response.data);
@@ -250,6 +324,7 @@
                     }
 
                 });
+
         });
     </script>
 

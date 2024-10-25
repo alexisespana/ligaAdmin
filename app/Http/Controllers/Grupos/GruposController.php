@@ -31,14 +31,11 @@ class GruposController extends Controller
         // dd($request->all());
         $categorias = $this->peticicion('grupos/agregar', 'get', $request->all());
         // dd($categorias);
-        if ($categorias->data->status == 200) {
-            $status = 'success';
-            $message = $categorias->data->message;
-        } else {
-            $status = 'error';
-            $message = 'error ' . $categorias->status;
-        }
+
+        $message =  $categorias->data->message;
+        $status = $categorias->status;
+
+        return response()->json(['message' => $message, 'status' => $status], $status);
         // dd($categorias);
-        return redirect()->route('viewLista-grupos')->with($status, $message);
     }
 }

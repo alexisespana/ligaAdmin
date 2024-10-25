@@ -12,14 +12,13 @@
                                         <input class="form-check-input checkbox me-1 mt-3" name="equipos[]"
                                             data-id="{{ $item->id }}" type="checkbox" value="{{ $item->id }}"
                                             id="{{ $grupo->id }}-{{ $item->id }}">
-                                       
-                                            <label class="form-check-label stretched-link"
+
+                                        <label class="form-check-label stretched-link"
                                             for="{{ $grupo->id }}-{{ $item->id }}">{{ $item->nombre }}</label>
-                                            <div class="avatar avatar-l ">
-                                                <img class="rounded-circle mt-2"
-                                                    src="{{ asset("img/Escudo/") }}{{ $item->escudo }}"
-                                                    alt="" />
-                                            </div>
+                                        <div class="avatar avatar-l ">
+                                            <img class="rounded-circle mt-2"
+                                                src="{{ asset('img/Escudo/') }}{{ $item->escudo }}" alt="" />
+                                        </div>
                                     </li>
                                 @endforeach
                             </ul>
@@ -121,24 +120,34 @@
 
                     idEquipos[i] = $(v).val();
                 });
-                // console.log(idEquipos);
 
             });
+            // console.log(idEquipos);
 
-
-
-            axios.post("{{ route('agregar-grupos') }}", {
+            // return;
+            Swal.fire({
+                title: "Desea Agregar los equipos seleccionados.?",
+                text: "Si los los grupos ya tienen equipos asignados, estos se borrarán y se asignaran los equipos seleccionados.",
+                showCancelButton: true,
+                confirmButtonText: "Si",
+                cancelButtonText: 'No',
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    axios.post("{{ route('agregar-grupos') }}", {
                     idEquipos: idEquipos,
                     idGrupos: idGrupos,
                     idCategoria: idCategoria,
 
                 })
                 .then(response => {
-                    if (response.status == 200) {
+
+
+                    if (response.data.status == 200) {
                         $('.modal').modal('hide');
                         Swal.fire({
-                            title: "Deleted!",
-                            text: "Your file has been deleted.",
+                            title: "Grupos Creados!",
+                            text: response.data.message,
                             icon: "success",
                             confirmButtonText: "OK",
 
@@ -181,6 +190,13 @@
                     }
 
                 });
+                } else if (result.isDenied) {
+                   
+                }
+            });
+
+
+           
 
         });
     });

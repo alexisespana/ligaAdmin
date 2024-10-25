@@ -89,16 +89,9 @@ class CategoriasController extends Controller
 
         // dd($request->all());
         $crear = $this->peticicion('categorias/crearCategoria', 'post', $request->all());
-        // dd($crear);
-
-        $status = 'success';
-        $message = $crear->data->message;
-        if ($crear->status == 500) {
-            $status = 'error';
-            $message = $crear->data->message;
-        }
+     
         // dd($status);
-        return redirect()->route('viewLista-categorias')->with($status, $message);
+        return response()->json(['message' => $crear->data->message, 'status' => $crear->status],$crear->status);
     }
 
     public function viewEditarCategorias(Request $request)

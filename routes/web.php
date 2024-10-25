@@ -56,4 +56,6 @@ Route::prefix('Juegos')->group(function () {
 });
 Route::prefix('Jornadas')->group(function () {
     Route::get('/Lista', [JornadasController::class, 'index'])->name('viewLista-jornadas');
+    Route::post('/Crear', [JornadasController::class, 'viewCrearJornadas'])->name('view-crear-jornada');
+    Route::post('/Modificar', [JornadasController::class, 'modificarJornada'])->name('modificar-jornada');
 });
