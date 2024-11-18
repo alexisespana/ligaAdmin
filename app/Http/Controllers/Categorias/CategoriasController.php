@@ -124,7 +124,7 @@ class CategoriasController extends Controller
             $message = 'error ' . $editar->status;
         }
         // dd($status);
-        return redirect()->route('viewLista-categorias')->with($status, $message);
+        return redirect()->route('viewCrear-juegos')->with($status, $message);
     }
 
     public function deleteCategorias(Request $request)

@@ -57,11 +57,11 @@
                                                                 <div class="d-flex w-100 justify-content-between">
                                                                     <h5 class="mb-1">{{ $jorn->nombre }}</h5>
                                                                     <span
-                                                                        class=" {{ $jorn->vigente == 0 ? 'text-success' : ($jorn->vigente == 1 ? 'text-info' : ($jorn->vigente == 2 ? 'text-secondary' : 'text-danger')) }}">
+                                                                        class=" {{ $jorn->status == 0 ? 'text-success' : ($jorn->status == 1 ? 'text-info' : ($jorn->status == 2 ? 'text-secondary' : 'text-danger')) }}">
                                                                         status:
-                                                                        {{ $jorn->vigente == 0 ? 'Completado' : ($jorn->vigente == 1 ? 'vigente' : ($jorn->vigente == 2 ? 'Pendiente' : 'Suspendido')) }}
+                                                                        {{ $jorn->status == 0 ? 'Completado' : ($jorn->status == 1 ? 'vigente' : ($jorn->status == 2 ? 'Pendiente' : 'Suspendido')) }}
                                                                         <i
-                                                                            class=" {{ $jorn->vigente == 0 ? 'fas fa-check-double' : ($jorn->vigente == 1 ? 'fas fa-check' : ($jorn->vigente == 2 ? 'fas fa-minus-circle' : 'far fa-times-circle')) }}">
+                                                                            class=" {{ $jorn->status == 0 ? 'fas fa-check-double' : ($jorn->status == 1 ? 'fas fa-check' : ($jorn->status == 2 ? 'fas fa-minus-circle' : 'far fa-times-circle')) }}">
                                                                         </i>
                                                                     </span>
                                                                 </div>
@@ -92,11 +92,11 @@
                                                         <div class="d-flex w-100 justify-content-between">
                                                             <h5 class="mb-1">{{ $jorn->nombre }}</h5>
                                                             <span
-                                                                class=" {{ $jorn->vigente == 0 ? 'text-success' : ($jorn->vigente == 1 ? 'text-info' : ($jorn->vigente == 2 ? 'text-secondary' : 'text-danger')) }}">
+                                                                class=" {{ $jorn->status == 0 ? 'text-success' : ($jorn->status == 1 ? 'text-info' : ($jorn->status == 2 ? 'text-secondary' : 'text-danger')) }}">
                                                                 status:
-                                                                {{ $jorn->vigente == 0 ? 'Completado' : ($jorn->vigente == 1 ? 'vigente' : ($jorn->vigente == 2 ? 'Pendiente' : 'Suspendido')) }}
+                                                                {{ $jorn->status == 0 ? 'Completado' : ($jorn->status == 1 ? 'vigente' : ($jorn->status == 2 ? 'Pendiente' : 'Suspendido')) }}
                                                                 <i
-                                                                    class=" {{ $jorn->vigente == 0 ? 'fas fa-check-double' : ($jorn->vigente == 1 ? 'fas fa-check' : ($jorn->vigente == 2 ? 'fas fa-minus-circle' : 'far fa-times-circle')) }}">
+                                                                    class=" {{ $jorn->status == 0 ? 'fas fa-check-double' : ($jorn->status == 1 ? 'fas fa-check' : ($jorn->status == 2 ? 'fas fa-minus-circle' : 'far fa-times-circle')) }}">
                                                                 </i>
                                                             </span>
                                                         </div>

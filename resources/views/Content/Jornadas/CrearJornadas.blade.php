@@ -17,7 +17,7 @@
                 <label class="form-label" for="status">Status de la Jornada</label>
                 <select class="form-select" aria-label="Default select example" id="status">
                     @foreach ($status as $item)
-                        <option {!! isset($jornada) && $jorn->vigente === $item->value ? 'selected ' : ' ' !!}value="{{ $item->value }}">{{ $item->status }}</option>
+                        <option {!! isset($jornada) && $jorn->status === $item->value ? 'selected ' : ' ' !!}value="{{ $item->value }}">{{ $item->status }}</option>
                     @endforeach
                 </select>
             </div>

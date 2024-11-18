@@ -53,6 +53,8 @@ Route::prefix('Equipos')->group(function () {
 });
 Route::prefix('Juegos')->group(function () {
     Route::get('/Lista', [JuegosController::class, 'index'])->name('viewLista-juegos');
+    Route::get('/Crear', [JuegosController::class, 'crearJuegos'])->name('viewCrear-juegos');
+    Route::post('/Registrar', [JuegosController::class, 'registrarJuegos'])->name('registrar-juegos');
 });
 Route::prefix('Jornadas')->group(function () {
     Route::get('/Lista', [JornadasController::class, 'index'])->name('viewLista-jornadas');
