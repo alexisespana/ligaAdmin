@@ -1,5 +1,5 @@
 @extends('layouts.inicio')
-@section('title', 'Equipos')
+@section('title', 'Juegos')
 @section('css')
     <link href="{{ asset('/css/toastr/toastr.min.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/sweetAlert/sweetalert.css') }}">

@@ -32,7 +32,7 @@ class JuegosController extends Controller
     public function registrarJuegos(Request $request)
     {
         $registrar = $this->peticicion('juegos/registrarJuegos', 'post', $request->all());
-        dd($registrar); //
+        // dd($registrar); //
         if ($registrar->status == 200) {
             $status = 'success';
             $message = $registrar->data->message;

@@ -30,10 +30,10 @@ class GruposController extends Controller
     {
         // dd($request->all());
         $categorias = $this->peticicion('grupos/agregar', 'get', $request->all());
-        // dd($categorias);
-
+        
         $message =  $categorias->data->message;
-        $status = $categorias->status;
+        $status = $categorias->data->status;
+        // dd($categorias);
 
         return response()->json(['message' => $message, 'status' => $status], $status);
         // dd($categorias);

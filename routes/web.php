@@ -5,6 +5,7 @@ use App\Http\Controllers\Equipos\EquiposController;
 use App\Http\Controllers\Grupos\GruposController;
 use App\Http\Controllers\Jornadas\JornadasController;
 use App\Http\Controllers\Juegos\JuegosController;
+use App\Http\Controllers\Posiciones\PosicionesController;
 use App\Http\Controllers\Resultados\ResultadosController;
 use Illuminate\Support\Facades\Route;
 
@@ -60,4 +61,9 @@ Route::prefix('Jornadas')->group(function () {
     Route::get('/Lista', [JornadasController::class, 'index'])->name('viewLista-jornadas');
     Route::post('/Crear', [JornadasController::class, 'viewCrearJornadas'])->name('view-crear-jornada');
     Route::post('/Modificar', [JornadasController::class, 'modificarJornada'])->name('modificar-jornada');
+});
+
+Route::prefix('Posiciones')->group(function () {
+    Route::get('/Tabla', [PosicionesController::class, 'index'])->name('viewLista-jornadas');
+
 });
