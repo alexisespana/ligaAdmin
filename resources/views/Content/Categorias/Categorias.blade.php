@@ -42,32 +42,30 @@
         </div>
     @endif
 
-        <div class="card-header">
-            Lista de categorias
+    <div class="card-header">
+        Lista de categorias
+    </div>
+    <div class="table-responsive scrollbar">
+        <table id="categorias" class="table table-bordered table-striped fs-10 mb-0">
+            <thead class="bg-200">
+                <tr>
+                    <th class="text-900 sort" data-sort="Nombre">#</th>
+                    <th class="text-900 sort" data-sort="Nombre">Nombre</th>
+                    <th class="text-900 sort" data-sort="NomnbreCorto">Nomnbre Corto</th>
+                    <th class="text-900 sort" data-sort="grupos">Grupos</th>
+                    <th class="text-900 sort" data-sort="n_grupos">Nro.Grupos</th>
+                    <th class="text-900 sort" data-sort="cantEquipos">Cantidad Equipos</th>
+                    <th class="text-900 sort" data-sort="cantEquipos">Equipos</th>
+                    <th class="text-900 sort" data-sort="cantEquipos">Opciones</th>
+                </tr>
+            </thead>
 
+            <tbody class="list">
 
-        </div>
-        <div class="table-responsive scrollbar">
-            <table id="categorias" class="table table-bordered table-striped fs-10 mb-0">
-                <thead class="bg-200">
-                    <tr>
-                        <th class="text-900 sort" data-sort="Nombre">#</th>
-                        <th class="text-900 sort" data-sort="Nombre">Nombre</th>
-                        <th class="text-900 sort" data-sort="NomnbreCorto">Nomnbre Corto</th>
-                        <th class="text-900 sort" data-sort="grupos">Grupos</th>
-                        <th class="text-900 sort" data-sort="n_grupos">Nro.Grupos</th>
-                        <th class="text-900 sort" data-sort="cantEquipos">Cantidad Equipos</th>
-                        <th class="text-900 sort" data-sort="cantEquipos">Equipos</th>
-                        <th class="text-900 sort" data-sort="cantEquipos">Opciones</th>
-                    </tr>
-                </thead>
+            </tbody>
+        </table>
 
-                <tbody class="list">
-
-                </tbody>
-            </table>
-
-        </div>
+    </div>
 
 
 @stop
@@ -243,7 +241,7 @@
         });
 
         $(document).on('click', '.deleteCateg', function(e) {
-            let nombre= $(this).parent().parent().parent().find('td.nombre').text();
+            let nombre = $(this).parent().parent().parent().find('td.nombre').text();
 
             let idCateg = $(this).attr('data-idcateg');
             Swal.fire({

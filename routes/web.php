@@ -5,6 +5,7 @@ use App\Http\Controllers\Equipos\EquiposController;
 use App\Http\Controllers\Grupos\GruposController;
 use App\Http\Controllers\Jornadas\JornadasController;
 use App\Http\Controllers\Juegos\JuegosController;
+use App\Http\Controllers\Jugadores\JugadoresController;
 use App\Http\Controllers\Posiciones\PosicionesController;
 use App\Http\Controllers\Resultados\ResultadosController;
 use Illuminate\Support\Facades\Route;
@@ -41,7 +42,7 @@ Route::prefix('Grupos')->group(function () {
 });
 
 Route::prefix('Resultados')->group(function () {
-    Route::get('/Lista', [ResultadosController::class, 'index'])->name('viewLista-resultados');
+    Route::get('/Juegos', [ResultadosController::class, 'index'])->name('viewLista-resultados');
 });
 
 Route::prefix('Equipos')->group(function () {
@@ -65,5 +66,11 @@ Route::prefix('Jornadas')->group(function () {
 
 Route::prefix('Posiciones')->group(function () {
     Route::get('/Tabla', [PosicionesController::class, 'index'])->name('viewLista-jornadas');
+
+});
+Route::prefix('Jugadores')->group(function () {
+    Route::get('/Lista', [JugadoresController::class, 'index'])->name('viewLista-jugadores');
+    Route::post('/datatables', [JugadoresController::class, 'datatableJugadores'])->name('datatables-jugadores');
+
 
 });
